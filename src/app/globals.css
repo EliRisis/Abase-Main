@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+/*
+ * ABASE DESIGN TOKENS
+ * -------------------------------------------------------------------------------------------
+ * One dark neutral base and ONE accent ("volt"). The accent is the brand: it marks the primary
+ * action, the active state and records (PRs, finished sessions). Nothing else is coloured except
+ * the three functional signals (success / warning / danger), which are never decorative.
+ *
+ *   color     bg-background > bg-surface > bg-surface-raised   |  text-foreground / text-muted
+ *             bg-primary + text-primary-foreground (volt)      |  success / warning / danger
+ *   type      display face (Barlow Condensed, caps, heavy):
+ *               text-stat-xl / text-stat / text-stat-sm / text-stat-xs (numbers),
+ *               text-display-xl / text-display / text-title / text-heading / text-label / text-label-sm
+ *               (headings and captions), text-button (buttons, tabs, nav)
+ *             body face (Barlow): text-subheading / text-body / text-caption / text-micro
+ *   radius    rounded-card 6px  >  rounded-control 4px  >  rounded-chip 2px   (square-shouldered)
+ *   spacing   4px base scale; role aliases gap-page (between sections), gap-section (inside one),
+ *             p-card / p-card-sm (padding)
+ *   surfaces  .surface-card  bordered slab, no shadow   |  .surface-inset  row inside a card
+ *             .lane-stripes  track-lane hatching used only on field sessions
+ *             .plate         solid heavy header used only on weight-room sessions
+ */
+
+:root {
+  --background: #0a0b09;
+  --surface: #12140f;
+  --surface-raised: #1a1d16;
+  --border: #272b21;
+  --foreground: #f3f5ee;
+  --muted: #8b9280;
+
+  --primary: #c8ff2e;
+  --primary-foreground: #0a0b09;
+  --ring: #c8ff2e;
+
+  --success: #43d17a;
+  --success-foreground: #04140a;
+  --danger: #ff5c5c;
+  --danger-foreground: #1a0505;
+  --warning: #ffb02e;
+  --warning-foreground: #1a1200;
+}
+
+:root[data-theme="light"] {
+  --background: #f2f3ee;
+  --surface: #ffffff;
+  --surface-raised: #e9ebe2;
+  --border: #d3d7c8;
+  --foreground: #0d0f0a;
+  --muted: #5d6453;
+
+  --primary: #8fbf00;
+  --primary-foreground: #0a0b09;
+  --ring: #5f8000;
+
+  --success: #16874a;
+  --success-foreground: #ffffff;
+  --danger: #c93030;
+  --danger-foreground: #ffffff;
+  --warning: #b86e00;
+  --warning-foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+@theme {
+  --text-subheading: 0.875rem;
+  --text-subheading--line-height: 1.25rem;
+  --text-subheading--font-weight: 600;
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.375rem;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1rem;
+  --text-micro: 0.6875rem;
+  --text-micro--line-height: 0.875rem;
+
+  --radius-card: 6px;
+  --radius-control: 4px;
+  --radius-chip: 2px;
+
+  --spacing-page: 1.75rem;
+  --spacing-section: 1rem;
+  --spacing-card: 1.25rem;
+  --spacing-card-sm: 1rem;
+}
+
+/* Display type: condensed, caps, heavy. Numbers are tabular so they read like a scoreboard. */
+@utility text-stat-xl {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  line-height: 0.9;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+@utility text-stat {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  line-height: 1;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+@utility text-stat-sm {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+@utility text-display {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 0.92;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+}
+@utility text-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+@utility text-heading {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  line-height: 1.1;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+@utility text-label {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+@utility text-label-sm {
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+@utility text-stat-xs {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  line-height: 1;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+/* Buttons, tabs and nav items: display face, caps. */
+@utility text-button {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  line-height: 1;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+/* Landing-page hero. */
+@utility text-display-xl {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  line-height: 0.9;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+@media (min-width: 640px) {
+  .text-display-xl {
+    font-size: 6.5rem;
+  }
+}
+
+/* Dark tile for sport / position artwork (drawn for dark surfaces), identical in both themes. */
+@utility icon-badge {
+  background: #0a0b09;
+  border: 1px solid #272b21;
+  border-radius: var(--radius-control);
+}
+
+@utility surface-card {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+@utility surface-inset {
+  border-radius: var(--radius-control);
+  border: 1px solid var(--border);
+  background: var(--background);
+}
+/* Track-lane hatching: the visual signature of a field session. */
+@utility lane-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 9px,
+    color-mix(in srgb, var(--foreground) 7%, transparent) 9px 11px
+  );
+}
+/* Solid heavy header: the visual signature of a weight-room session. */
+@utility plate {
+  background: var(--surface-raised);
+  border-bottom: 3px solid var(--foreground);
+}
+
+html {
+  color-scheme: dark;
+}
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
