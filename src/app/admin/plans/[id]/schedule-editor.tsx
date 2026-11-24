@@ -78,7 +78,7 @@ export function ScheduleEditor({
               return (
                 <div
                   key={day}
-                  className="flex items-center justify-between gap-3 rounded-control border border-border bg-surface p-3.5"
+                  className="flex items-center justify-between gap-3 rounded-control border border-border bg-surface p-card-sm"
                 >
                   <span className="w-24 shrink-0 text-label text-muted">
                     {label}

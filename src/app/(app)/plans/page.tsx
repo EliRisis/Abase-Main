@@ -9,7 +9,7 @@ export default async function PlansPage() {
   const [{ data: plans }, { data: sports }, { data: positions }] = await Promise.all([
     supabase
       .from("plans")
-      .select("*, sport:sports(id,name,slug,icon), position:positions(id,name,slug,sport_id)")
+      .select("*, sport:sports(id,name,slug), position:positions(id,name,slug,sport_id)")
       .eq("published", true)
       .order("name"),
     supabase.from("sports").select("*").order("name"),

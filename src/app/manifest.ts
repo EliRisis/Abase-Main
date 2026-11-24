@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Abase — Athlete Training",
+    name: "Abase · Athlete Training",
     short_name: "Abase",
     description:
       "Position-specific workouts and multi-week training plans for athletes.",

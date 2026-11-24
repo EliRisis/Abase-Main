@@ -34,7 +34,7 @@ export interface ExerciseLoggerProps {
 function Stepper({ value, onChange, step, min, label }: { value: number | null; onChange: (v: number) => void; step: number; min: number; label: string }) {
   const v = value ?? 0;
   return (
-    <div className="flex h-12 w-[6.25rem] shrink-0 items-center rounded-control border border-border bg-background">
+    <div className="flex h-12 w-[6.25rem] shrink-0 items-center rounded-control border border-border-strong bg-background">
       <button type="button" aria-label={`Less ${label}`} onClick={() => onChange(Math.max(min, +(v - step).toFixed(2)))} className="flex h-full w-7 items-center justify-center text-muted hover:text-foreground">
         <Minus size={14} />
       </button>
@@ -109,13 +109,13 @@ export function ExerciseLogger(props: ExerciseLoggerProps) {
         </Button>
       </div>
       <div className="flex flex-col gap-2 p-card-sm">
-        <div className="text-label-sm flex items-center gap-1.5 text-muted">
+        <div className="text-label-sm flex items-center gap-1 text-muted">
           <span className="w-7 shrink-0 text-center">Set</span>
           {props.countsReps && <span className="w-[6.25rem] shrink-0 text-center">Reps</span>}
           {props.showWeight && <span className="w-[6.25rem] shrink-0 text-center">Weight ({props.unit})</span>}
         </div>
         {sets.map((s) => (
-          <div key={s.id} className={cn("flex items-center gap-1.5", s.completed && "[&>*:not(button)]:opacity-60")}>
+          <div key={s.id} className={cn("flex items-center gap-1", s.completed && "[&>*:not(button)]:opacity-60")}>
             <span className="text-stat-sm w-7 shrink-0 text-center text-muted">{s.setNumber}</span>
             {props.countsReps ? (
               <Stepper label={`Set ${s.setNumber} reps`} value={s.reps} step={1} min={0} onChange={(v) => patch(s.id, { reps: Math.round(v) })} />

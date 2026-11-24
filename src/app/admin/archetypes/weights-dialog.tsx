@@ -49,7 +49,7 @@ export function WeightsDialog({
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>{archetype.name} — category weights</DialogTitle>
+            <DialogTitle>{archetype.name} · category weights</DialogTitle>
             <DialogDescription>
               Relative emphasis (0-20) per training phase. The assembler turns these into a
               proportional share of the week&apos;s sessions.
@@ -60,9 +60,9 @@ export function WeightsDialog({
             <table className="w-full text-body">
               <thead>
                 <tr>
-                  <th className="p-1.5 text-left text-caption font-medium text-muted">Phase</th>
+                  <th className="p-2 text-left text-caption font-medium text-muted">Phase</th>
                   {CATEGORIES.map((c) => (
-                    <th key={c} className="p-1.5 text-center text-caption font-medium text-muted">
+                    <th key={c} className="p-2 text-center text-caption font-medium text-muted">
                       {CATEGORY_SHORT[c]}
                     </th>
                   ))}
@@ -71,7 +71,7 @@ export function WeightsDialog({
               <tbody>
                 {PHASES.map((p) => (
                   <tr key={p}>
-                    <td className="p-1.5 text-caption font-semibold">{PHASE_LABEL[p]}</td>
+                    <td className="p-2 text-caption font-semibold">{PHASE_LABEL[p]}</td>
                     {CATEGORIES.map((c) => {
                       const key = `${p}:${c}`;
                       return (

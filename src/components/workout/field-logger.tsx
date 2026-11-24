@@ -79,7 +79,7 @@ export function FieldLogger({
   const done = sets.filter((s) => s.completed).length;
 
   return (
-    <div className="surface-card overflow-hidden border-l-[4px] border-l-primary">
+    <div className="surface-card overflow-hidden">
       <div className="lane-stripes flex items-start justify-between gap-3 border-b border-border px-card-sm py-3">
         <div className="min-w-0">
           <h2 className="text-heading">{name}</h2>
@@ -101,14 +101,14 @@ export function FieldLogger({
       </div>
 
       {(best != null || restSeconds) && (
-        <div className="flex items-center gap-4 border-b border-border px-card-sm py-2 text-label text-muted">
+        <div className="flex items-center gap-section border-b border-border px-card-sm py-2 text-label text-muted">
           {best != null && spec.timed && (
             <span>
               Best <span className="text-stat-xs text-foreground">{best}</span> sec
             </span>
           )}
           {restSeconds ? (
-            <span className="inline-flex items-center gap-1.5">
+            <span className="inline-flex items-center gap-1">
               <Clock size={12} strokeWidth={3} /> Rest {clock(restSeconds)}
             </span>
           ) : null}
@@ -134,10 +134,10 @@ export function FieldLogger({
 
       <ul className="flex flex-col divide-y divide-border">
         {sets.map((s) => (
-          <li key={s.id} className={cn("flex items-center gap-3 px-card-sm py-2.5", s.completed && "bg-surface-raised")}>
+          <li key={s.id} className={cn("flex items-center gap-3 px-card-sm py-3", s.completed && "bg-surface-raised")}>
             <span className="text-stat-sm w-9 shrink-0 text-muted">{String(s.setNumber).padStart(2, "0")}</span>
             {spec.timed ? (
-              <label className="flex flex-1 items-baseline gap-1.5">
+              <label className="flex flex-1 items-baseline gap-1">
                 <input
                   type="number"
                   inputMode="decimal"
@@ -148,10 +148,10 @@ export function FieldLogger({
                   value={text[s.id] ?? ""}
                   onChange={(e) => setText((t) => ({ ...t, [s.id]: e.target.value }))}
                   onBlur={() => saveTime(s)}
-                  className="text-stat h-12 w-full min-w-0 max-w-32 border-b-2 border-border bg-transparent outline-none placeholder:text-border focus:border-primary"
+                  className="text-stat h-12 w-full min-w-0 max-w-32 border-b-2 border-border-strong bg-transparent outline-none placeholder:text-border focus:border-primary"
                 />
                 <span className="text-label text-muted">sec</span>
-                {isPr(s) && <span className="text-label-sm bg-primary px-1.5 py-1 text-primary-foreground">PR</span>}
+                {isPr(s) && <span className="text-label-sm bg-primary px-2 py-1 text-primary-foreground">PR</span>}
               </label>
             ) : (
               <span className="flex-1 text-heading text-muted">{spec.label}</span>

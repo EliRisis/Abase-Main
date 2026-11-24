@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function AuthErrorPage() {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-4 px-6 text-center">
+    <div className="flex flex-1 flex-col items-center justify-center gap-section px-6 text-center">
       <AlertTriangle size={36} className="text-danger" />
       <h1 className="text-title">Sign-in link didn&apos;t work</h1>
       <p className="max-w-sm text-body text-muted">

@@ -12,7 +12,7 @@ export default async function NewPlanPage() {
   ]);
 
   return (
-    <div className="flex max-w-xl flex-col gap-4">
+    <div className="flex max-w-xl flex-col gap-section">
       <h1 className="text-title">New plan</h1>
       <p className="-mt-2 text-body text-muted">
         You&apos;ll build the weekly schedule on the next step, after saving

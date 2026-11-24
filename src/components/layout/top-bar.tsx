@@ -33,7 +33,7 @@ export function TopBar({
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background safe-top">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-3.5">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4">
         <div className="flex items-center gap-8">
           <Link href="/today" className="flex items-center gap-2 text-title leading-none tracking-wide" aria-label="Abase home">
             <span className="flex h-7 w-7 items-center justify-center rounded-chip bg-primary text-primary-foreground">

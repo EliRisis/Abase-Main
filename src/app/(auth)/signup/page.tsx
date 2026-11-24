@@ -16,8 +16,8 @@ export default function SignUpPage() {
 
   if (state.needsEmailConfirmation) {
     return (
-      <div className="flex flex-col items-center gap-4 text-center">
-        <MailCheck size={36} className="text-primary" />
+      <div className="flex flex-col items-center gap-section text-center">
+        <MailCheck size={36} className="text-primary-text" />
         <h1 className="text-title">Check your email</h1>
         <p className="text-body text-muted">
           We sent you a confirmation link. Click it to finish creating your
@@ -96,7 +96,7 @@ export default function SignUpPage() {
 
       <p className="text-center text-body text-muted">
         Already have an account?{" "}
-        <Link href="/login" className="font-semibold text-primary">
+        <Link href="/login" className="font-semibold text-primary-text">
           Log in
         </Link>
       </p>

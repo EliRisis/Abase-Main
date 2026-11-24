@@ -34,7 +34,7 @@ export function RecoveryLogger({ name, prescription, note, sets: initial }: { na
           {note ? ` · ${note}` : ""}
         </p>
       </div>
-      <div className="flex shrink-0 gap-1.5">
+      <div className="flex shrink-0 gap-1">
         {sets.map((s) => (
           <button
             key={s.id}

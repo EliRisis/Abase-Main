@@ -53,10 +53,10 @@ export default async function ArchivedProgramPage({ params }: { params: Promise<
   return (
     <div className="flex flex-col gap-page">
       <div>
-        <Link href="/program/history" className="text-label inline-flex items-center gap-1.5 text-muted hover:text-foreground">
+        <Link href="/program/history" className="text-label inline-flex items-center gap-1 text-muted hover:text-foreground">
           <ArrowLeft size={14} /> History
         </Link>
-        <p className="text-label mt-3 text-primary">Archived · {fmt(program.archived_at ?? program.created_at)}</p>
+        <p className="text-label mt-3 text-primary-text">Archived · {fmt(program.archived_at ?? program.created_at)}</p>
         <div className="mt-2 flex items-center gap-3">
           <PositionIcon slug={program.position_id ? posSlug.get(program.position_id) : null} name={program.position_id ? posName.get(program.position_id) : ""} size={48} className="rounded-card" />
           {program.secondary_position_id && <PositionIcon slug={posSlug.get(program.secondary_position_id)} name={posName.get(program.secondary_position_id) ?? ""} size={30} className="rounded-control" />}
@@ -83,7 +83,7 @@ export default async function ArchivedProgramPage({ params }: { params: Promise<
               planned += sess.length;
               return (
                 <details key={d.id} className="surface-card">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3.5">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-4">
                     <span className="flex flex-col">
                       <span className="text-heading">
                         {WEEKDAY_NAMES[d.day_number - 1]} · {d.title}
@@ -95,18 +95,18 @@ export default async function ArchivedProgramPage({ params }: { params: Promise<
                     </span>
                     <span className="flex shrink-0 items-center gap-2">
                       {sess.map((s) => (
-                        <span key={s.setting} className={doneSet.has(s.setting) ? "text-primary" : "text-muted"} title={SESSION_SHORT[s.setting]}>
+                        <span key={s.setting} className={doneSet.has(s.setting) ? "text-primary-text" : "text-muted"} title={SESSION_SHORT[s.setting]}>
                           {doneSet.has(s.setting) ? <CheckCircle2 size={18} /> : <SessionIcon session={s.setting} size={18} />}
                         </span>
                       ))}
                     </span>
                   </summary>
-                  <div className="flex flex-col gap-4 border-t border-border p-3.5">
+                  <div className="flex flex-col gap-section border-t border-border p-card-sm">
                     {sess.map((s) => (
                       <div key={s.setting} className="flex flex-col gap-2">
                         <p className="text-label flex items-center gap-2">
-                          <SessionIcon session={s.setting} size={16} className="text-primary" /> {SESSION_SHORT[s.setting]}
-                          {doneSet.has(s.setting) ? <span className="text-primary">· done</span> : null}
+                          <SessionIcon session={s.setting} size={16} className="text-primary-text" /> {SESSION_SHORT[s.setting]}
+                          {doneSet.has(s.setting) ? <span className="text-primary-text">· done</span> : null}
                         </p>
                         <SessionExercises session={s.setting} lines={s.rows.map(line)} />
                       </div>

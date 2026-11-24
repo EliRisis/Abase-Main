@@ -77,9 +77,9 @@ export function PositionsManager({
                 </span>
               </p>
               {position.description && (
-                <p className="mt-0.5 text-caption text-muted">{position.description}</p>
+                <p className="mt-1 text-caption text-muted">{position.description}</p>
               )}
-              <p className="mt-0.5 text-caption text-primary">
+              <p className="mt-1 text-caption text-primary-text">
                 {position.archetype_id
                   ? archetypeById.get(position.archetype_id)?.name
                   : "No archetype"}

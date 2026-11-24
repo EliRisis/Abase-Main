@@ -12,7 +12,7 @@ export default async function NewWorkoutPage() {
   ]);
 
   return (
-    <div className="flex max-w-xl flex-col gap-4">
+    <div className="flex max-w-xl flex-col gap-section">
       <h1 className="text-title">New workout</h1>
       <p className="-mt-2 text-body text-muted">
         You&apos;ll add exercises on the next step, after saving the details.

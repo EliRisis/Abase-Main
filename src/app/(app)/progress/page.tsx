@@ -53,7 +53,7 @@ export default async function ProgressPage() {
         </div>
         <Link
           href="/metrics"
-          className="text-label inline-flex shrink-0 items-center gap-1.5 rounded-control border-2 border-foreground/70 px-3.5 py-2.5 text-foreground transition hover:bg-foreground hover:text-background"
+          className="text-label inline-flex shrink-0 items-center gap-1 rounded-control border-2 border-foreground/70 px-4 py-3 text-foreground transition hover:bg-foreground hover:text-background"
         >
           <LineChart size={14} /> Metrics
         </Link>
@@ -69,15 +69,14 @@ export default async function ProgressPage() {
         <h2 className="text-label mb-3 text-muted">History</h2>
         {!completedLogs || completedLogs.length === 0 ? (
           <div className="rounded-card border border-dashed border-border p-10 text-center text-body text-muted">
-            No completed workouts yet — finish one from today&apos;s dashboard
-            and it&apos;ll show up here.
+            No completed workouts yet. Finish one from Today and it shows up here.
           </div>
         ) : (
           <div className="flex flex-col divide-y divide-border surface-card">
             {completedLogs.map((log) => (
               <div key={log.id} className="flex items-center justify-between p-4">
                 <div className="flex items-center gap-3">
-                  {log.setting && <SessionIcon session={log.setting} size={22} className="shrink-0 text-primary" />}
+                  {log.setting && <SessionIcon session={log.setting} size={22} className="shrink-0 text-primary-text" />}
                   <div>
                     <p className="text-heading">{log.day?.title ?? log.workout?.name ?? "Workout"}</p>
                     <p className="mt-1 text-caption text-muted">
@@ -110,7 +109,7 @@ function StatCard({
 }) {
   return (
     <div className="flex flex-col items-center gap-1 surface-card p-card-sm text-center">
-      <Icon size={18} className="text-primary" />
+      <Icon size={18} className="text-primary-text" />
       <span className="text-stat">{value}</span>
       <span className="text-label-sm text-muted">{sub}</span>
       <span className="sr-only">{label}</span>

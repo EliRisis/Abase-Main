@@ -27,11 +27,14 @@
   --surface: #12140f;
   --surface-raised: #1a1d16;
   --border: #272b21;
+  --border-strong: #626a55;
   --foreground: #f3f5ee;
   --muted: #8b9280;
 
   --primary: #c8ff2e;
   --primary-foreground: #0a0b09;
+  /* the accent when it is TEXT or a thin icon stroke on a page surface; --primary stays for fills */
+  --primary-text: #c8ff2e;
   --ring: #c8ff2e;
 
   --success: #43d17a;
@@ -47,18 +50,20 @@
   --surface: #ffffff;
   --surface-raised: #e9ebe2;
   --border: #d3d7c8;
+  --border-strong: #7d846f;
   --foreground: #0d0f0a;
   --muted: #5d6453;
 
   --primary: #8fbf00;
   --primary-foreground: #0a0b09;
+  --primary-text: #4a6600;
   --ring: #5f8000;
 
-  --success: #16874a;
+  --success: #147842;
   --success-foreground: #ffffff;
-  --danger: #c93030;
+  --danger: #c52f2f;
   --danger-foreground: #ffffff;
-  --warning: #b86e00;
+  --warning: #995b00;
   --warning-foreground: #ffffff;
 }
 
@@ -67,11 +72,13 @@
   --color-surface: var(--surface);
   --color-surface-raised: var(--surface-raised);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
 
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-text: var(--primary-text);
 
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
@@ -244,8 +251,11 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
-* {
-  border-color: var(--border);
+/* In the base layer so border-primary, border-foreground, border-border-strong etc. can override it (unlayered CSS beats every utility). */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
 }
 
 ::selection {

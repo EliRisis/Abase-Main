@@ -40,7 +40,7 @@ export function SessionExercises({ session, lines }: { session: Session; lines: 
       {blocks.map((b) => (
         <div key={b}>
           <p className="text-label mb-2 text-muted">{BLOCK_LABEL[b]}</p>
-          <ul className={cn("flex flex-col", session === "recovery" ? "divide-y divide-border surface-inset" : "gap-1.5")}>
+          <ul className={cn("flex flex-col", session === "recovery" ? "divide-y divide-border surface-inset" : "gap-1")}>
             {lines
               .filter((l) => l.block === b)
               .map((l) => (
@@ -57,8 +57,8 @@ function Meta({ l }: { l: ExerciseLine }) {
   const bits = [l.pattern ? PATTERN_LABEL[l.pattern] : null, l.note].filter(Boolean);
   return (
     <>
-      {bits.length > 0 && <p className="mt-0.5 text-caption text-muted">{bits.join(" · ")}</p>}
-      {l.loadReason && <p className="mt-0.5 text-caption text-primary">{l.loadReason}</p>}
+      {bits.length > 0 && <p className="mt-1 text-caption text-muted">{bits.join(" · ")}</p>}
+      {l.loadReason && <p className="mt-1 text-caption text-primary-text">{l.loadReason}</p>}
     </>
   );
 }
@@ -66,30 +66,30 @@ function Meta({ l }: { l: ExerciseLine }) {
 /** Weight room: name on the left, SETS x REPS and LOAD as scoreboard numerals on the right. */
 function WeightRow({ l }: { l: ExerciseLine }) {
   return (
-    <div className="surface-inset flex items-center justify-between gap-3 px-3 py-2.5">
+    <div className="surface-inset flex items-center justify-between gap-3 px-3 py-3">
       <div className="min-w-0">
         <p className="text-subheading">{l.name}</p>
         <Meta l={l} />
-        {l.restSeconds ? <p className="mt-0.5 text-caption text-muted">Rest {clock(l.restSeconds)}</p> : null}
+        {l.restSeconds ? <p className="mt-1 text-caption text-muted">Rest {clock(l.restSeconds)}</p> : null}
       </div>
-      <div className="flex shrink-0 items-stretch gap-1.5">
-        <div className="flex min-w-14 flex-col items-center justify-center bg-surface-raised px-2 py-1.5">
+      <div className="flex shrink-0 items-stretch gap-1">
+        <div className="flex min-w-14 flex-col items-center justify-center bg-surface-raised px-2 py-2">
           <span className="text-stat-sm">
             {l.sets}
             <span className="text-muted">×</span>
             {l.reps}
           </span>
-          <span className="text-label-sm mt-0.5 text-muted">sets × reps</span>
+          <span className="text-label-sm mt-1 text-muted">sets × reps</span>
         </div>
         {l.targetWeight ? (
-          <div className="flex min-w-14 flex-col items-center justify-center bg-primary px-2 py-1.5 text-primary-foreground">
+          <div className="flex min-w-14 flex-col items-center justify-center bg-primary px-2 py-2 text-primary-foreground">
             <span className="text-stat-sm">{l.targetWeight}</span>
-            <span className="text-label-sm mt-0.5">{l.unit}</span>
+            <span className="text-label-sm mt-1">{l.unit}</span>
           </div>
         ) : (
-          <div className="flex min-w-14 flex-col items-center justify-center border border-border px-2 py-1.5 text-muted">
+          <div className="flex min-w-14 flex-col items-center justify-center border border-border px-2 py-2 text-muted">
             <span className="text-stat-sm">BW</span>
-            <span className="text-label-sm mt-0.5">load</span>
+            <span className="text-label-sm mt-1">load</span>
           </div>
         )}
       </div>
@@ -103,10 +103,10 @@ const UNIT_LABEL = { yd: "yards", m: "meters", s: "sec", min: "min" } as const;
 function FieldRow({ l }: { l: ExerciseLine }) {
   const spec = fieldSpec(l.reps);
   return (
-    <div className="surface-inset border-l-[3px] border-l-primary px-3 py-2.5">
+    <div className="surface-inset px-3 py-3">
       <p className="text-subheading">{l.name}</p>
       <Meta l={l} />
-      <div className="mt-2 grid grid-cols-3 gap-1.5">
+      <div className="mt-2 grid grid-cols-3 gap-1">
         <Tile value={String(l.sets)} label={spec.amount ? "reps" : "sets"} />
         <Tile value={spec.amount ? String(spec.amount) : l.reps} label={spec.unit ? UNIT_LABEL[spec.unit] : "each"} small={!spec.amount} />
         <Tile value={l.restSeconds ? clock(l.restSeconds) : "-"} label="rest" muted icon />
@@ -117,7 +117,7 @@ function FieldRow({ l }: { l: ExerciseLine }) {
 
 function Tile({ value, label, small, muted, icon }: { value: string; label: string; small?: boolean; muted?: boolean; icon?: boolean }) {
   return (
-    <div className={cn("flex flex-col items-center justify-center px-1.5 py-1.5", muted ? "border border-border" : "bg-surface-raised")}>
+    <div className={cn("flex flex-col items-center justify-center px-2 py-2", muted ? "border border-border" : "bg-surface-raised")}>
       <span className={cn(small ? "text-heading leading-none" : "text-stat-sm", muted && "text-muted")}>{value}</span>
       <span className="text-label-sm mt-1 flex items-center gap-1 text-muted">
         {icon && <Clock size={10} strokeWidth={3} />}
@@ -130,10 +130,10 @@ function Tile({ value, label, small, muted, icon }: { value: string; label: stri
 /** Recovery: a quiet checklist line. */
 function RecoveryRow({ l }: { l: ExerciseLine }) {
   return (
-    <div className="flex items-baseline justify-between gap-3 px-3 py-2.5">
+    <div className="flex items-baseline justify-between gap-3 px-3 py-3">
       <div className="min-w-0">
         <p className="text-subheading">{l.name}</p>
-        {l.note && <p className="mt-0.5 text-caption text-muted">{l.note}</p>}
+        {l.note && <p className="mt-1 text-caption text-muted">{l.note}</p>}
       </div>
       <span className="shrink-0 text-body tabular-nums text-muted">
         {l.sets} × {l.reps}

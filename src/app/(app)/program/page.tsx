@@ -1,5 +1,5 @@
 import { PositionIcon } from "@/components/icons/app-icon";
-import { CalendarRange, Flag, HeartPulse, Info, Target, TrendingUp } from "@/components/icons";
+import { CalendarRange, Flag, HeartPulse, Target, TrendingUp } from "@/components/icons";
 import Link from "next/link";
 import { AttributeBars } from "@/components/program/attribute-bars";
 import { EditDaysButton } from "@/components/program/edit-days-button";
@@ -20,6 +20,7 @@ import type { DayExerciseRow } from "@/lib/program/service";
 import { ATTRIBUTES, ATTRIBUTE_LABEL, BODY_AREA_LABEL, INTENSITY_LABEL, PHASE_LABEL, SIDE_LABEL } from "@/lib/training";
 import { cn } from "@/lib/utils";
 import type { Json, Tables, TrainingAttribute } from "@/lib/database.types";
+import { Callout } from "@/components/ui/callout";
 
 export const metadata = { title: "Your Program" };
 
@@ -72,7 +73,7 @@ export default async function ProgramPage({ searchParams }: { searchParams: Prom
           </p>
         </div>
         <NewBlockForm positions={positions} defaults={defaults} currentPhase={profile.training_phase} current={null} />
-        <Link href="/plans" className="text-label text-primary">
+        <Link href="/plans" className="text-label text-primary-text">
           Or browse individual modules →
         </Link>
         {historyLink}
@@ -106,7 +107,7 @@ export default async function ProgramPage({ searchParams }: { searchParams: Prom
       <div className="flex flex-col gap-page">
         <h1 className="text-display">Your Program</h1>
         <div className="flex flex-col items-center gap-3 rounded-card border border-dashed border-border p-10 text-center">
-          <CalendarRange size={32} className="text-primary" />
+          <CalendarRange size={32} className="text-primary-text" />
           <p className="text-heading">You finished this {program.weeks}-week block</p>
           <p className="text-body text-muted">Start the next one. Your logged weights carry over, so your targets keep progressing.</p>
         </div>
@@ -210,7 +211,7 @@ export default async function ProgramPage({ searchParams }: { searchParams: Prom
       const dateLabel = d.date === today ? "Today" : d.date === addDays(today, 1) ? "Tomorrow" : fmtShort(d.date);
       return (
         <details key={d.id} id={`${track}-day-${d.date}`} className="group surface-card" open={d.date === today}>
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-3.5">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-4">
             <span className="flex flex-col">
               <span className="text-heading">
                 Day {dayIndexOf(d)} · {sessionTitle(d.title)}
@@ -231,7 +232,7 @@ export default async function ProgramPage({ searchParams }: { searchParams: Prom
               )}
             </span>
           </summary>
-          <div className="flex flex-col gap-4 border-t border-border p-3.5">
+          <div className="flex flex-col gap-section border-t border-border p-card-sm">
             {d.note && <p className="text-caption text-muted">{d.note}</p>}
             {d.why_note && <WhyNote position={positionName} text={d.why_note} />}
             <SessionExercises session={track} lines={lines} />
@@ -250,7 +251,7 @@ export default async function ProgramPage({ searchParams }: { searchParams: Prom
         <h2 className="text-label text-muted">Up next</h2>
 
         {!legacy && (
-          <section className="flex flex-col gap-4" aria-label={`${track === "field" ? "Field" : "Gym"} sessions`}>
+          <section className="flex flex-col gap-section" aria-label={`${track === "field" ? "Field" : "Gym"} sessions`}>
             {future.length === 0 && <p className="text-body text-muted">No more {track === "field" ? "field / court" : "gym"} sessions in this block.</p>}
             <ShowMoreWeeks
               initial={
@@ -304,19 +305,13 @@ export default async function ProgramPage({ searchParams }: { searchParams: Prom
   return (
     <div className="flex flex-col gap-page">
       {welcome && (
-        <div className="flex items-start gap-3 border-l-[4px] border-l-primary bg-surface p-4">
-          <Info size={18} className="mt-0.5 shrink-0 text-primary" />
-          <div>
-            <p className="text-heading">Your first program is ready</p>
-            <p className="mt-1 text-caption text-muted">
-              Built for a {positionName} in {PHASE_LABEL[program.phase].toLowerCase()}. Every area is in it. Use Adjust program to change your position, season or focus, and Coach settings to set a target date, flag anything to go easy on and add your games.
-            </p>
-          </div>
-        </div>
+        <Callout label="Your first program is ready">
+          Built for a {positionName} in {PHASE_LABEL[program.phase].toLowerCase()}. Every area is in it. Use Adjust program to change your position, season or focus, and Coach settings to set a target date, flag anything to go easy on and add your games.
+        </Callout>
       )}
 
       <div>
-        <p className="text-label text-primary">
+        <p className="text-label text-primary-text">
           {PHASE_LABEL[program.phase]} · {weekRangeLabel}
         </p>
         <div className="mt-2 flex items-center gap-3">
@@ -325,7 +320,7 @@ export default async function ProgramPage({ searchParams }: { searchParams: Prom
             {deloadWeek ? " · Deload" : ""}
           </h1>
           {primarySlug && (
-            <span className="flex items-center gap-1.5">
+            <span className="flex items-center gap-1">
               <PositionIcon slug={primarySlug} name={nameOf(defaults.positionId)} size={48} className="rounded-card" />
               {secondarySlug && <PositionIcon slug={secondarySlug} name={nameOf(defaults.secondaryPositionId)} size={30} className="rounded-control" />}
             </span>
@@ -336,7 +331,7 @@ export default async function ProgramPage({ searchParams }: { searchParams: Prom
       {controls}
 
       {legacy && (
-        <div className="flex flex-col gap-2 rounded-card border border-warning/60 p-4">
+        <div className="flex flex-col gap-2 rounded-card border border-warning/60 p-card-sm">
           <p className="text-heading">This week was built with the older builder</p>
           <p className="text-caption text-muted">Start a new training block to get position-scored exercises, separate weight-room and field sessions, progressive targets and calendar-aware lightening. Your current program is archived, not deleted.</p>
         </div>
@@ -345,7 +340,7 @@ export default async function ProgramPage({ searchParams }: { searchParams: Prom
       {adjustments.length > 0 && (
         <section className="flex flex-col gap-2 surface-card p-card-sm" aria-label="What changed and why">
           <h2 className="text-label text-muted">What changed and why</h2>
-          <ul className="flex flex-col gap-1.5 text-body">
+          <ul className="flex flex-col gap-1 text-body">
             {adjustments.map((a) => (
               <li key={a.message}>{a.message}</li>
             ))}
@@ -382,7 +377,7 @@ export default async function ProgramPage({ searchParams }: { searchParams: Prom
         {program.phase === "in_season" && athlete.events.length === 0 && (
           <Notice icon={<Flag size={15} />} tone="default">
             Add your games and practices and in-season sessions will lighten around them automatically.{" "}
-            <Link href="/program/coach" className="font-semibold text-primary">
+            <Link href="/program/coach" className="font-semibold text-primary-text">
               Add them
             </Link>
           </Notice>
@@ -434,10 +429,10 @@ export default async function ProgramPage({ searchParams }: { searchParams: Prom
       </section>
 
       <div className="flex flex-col gap-2 text-center">
-        <Link href="/program/coach" className="text-label text-primary">
+        <Link href="/program/coach" className="text-label text-primary-text">
           Coach settings: target date, go-easy flags, games &amp; practices →
         </Link>
-        <Link href="/plans" className="text-label text-primary">
+        <Link href="/plans" className="text-label text-primary-text">
           Browse modules for an extra session →
         </Link>
         {modulePlan && (
@@ -452,12 +447,7 @@ export default async function ProgramPage({ searchParams }: { searchParams: Prom
 
 function WhyNote({ position, text }: { position: string; text: string }) {
   return (
-    <p className="flex items-start gap-2 border-l-[3px] border-l-primary bg-surface px-3 py-2 text-caption">
-      <Info size={14} className="mt-0.5 shrink-0 text-primary" />
-      <span>
-        <span className="font-semibold">Why this matters for a {position.toLowerCase()}:</span> {text}
-      </span>
-    </p>
+    <Callout label={`Why this matters for a ${position.toLowerCase()}`}>{text}</Callout>
   );
 }
 
@@ -471,7 +461,7 @@ function Notice({ icon, tone, children }: { icon: React.ReactNode; tone: "primar
         tone === "default" && "border-border bg-surface",
       )}
     >
-      <span className={cn("mt-0.5 shrink-0", tone === "warning" ? "text-warning" : "text-primary")}>{icon}</span>
+      <span className={cn("mt-1 shrink-0", tone === "warning" ? "text-warning" : "text-primary-text")}>{icon}</span>
       <span>{children}</span>
     </p>
   );

@@ -96,7 +96,7 @@ export function NewBlockForm({
 
         <PositionPicker positions={positions} positionId={positionId} setPositionId={setPositionId} secondaryId={secondaryId} setSecondaryId={setSecondaryId} />
 
-        <div className="flex flex-col gap-1.5">
+        <div className="flex flex-col gap-1">
           <span className="text-label text-muted">Where are you in your season?</span>
           <SeasonPicker value={phase} onChange={setPhase} />
           <input type="hidden" name="phase" value={phase} />
@@ -113,7 +113,7 @@ export function NewBlockForm({
         </div>
         <div>
           <span className="text-label text-muted">Which days can you train?</span>
-          <div className="mt-1.5">
+          <div className="mt-2">
             <DayChips value={trainingDays} onChange={setTrainingDays} />
           </div>
         </div>

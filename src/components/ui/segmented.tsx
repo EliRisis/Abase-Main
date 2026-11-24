@@ -23,12 +23,12 @@ export function Segmented<T extends string | number>({
   columns?: number;
 }) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-1">
       <span className="text-label text-muted">{label}</span>
       <div
         role="radiogroup"
         aria-label={label}
-        className="grid gap-1.5"
+        className="grid gap-1"
         style={{ gridTemplateColumns: `repeat(${columns ?? options.length}, minmax(0, 1fr))` }}
       >
         {options.map((o) => {

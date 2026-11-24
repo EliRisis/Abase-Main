@@ -60,7 +60,7 @@ export function PositionPicker({
             </>
           )}
         </p>
-        <button type="button" onClick={() => setEditing((v) => !v)} className="inline-flex items-center gap-1 text-label text-primary">
+        <button type="button" onClick={() => setEditing((v) => !v)} className="inline-flex items-center gap-1 text-label text-primary-text">
           <Pencil size={12} /> {editing ? "Done" : "Change"}
         </button>
       </div>
@@ -146,7 +146,7 @@ export function FocusPicker({ focus, setFocus }: { focus: TrainingAttribute[]; s
               onClick={() => toggle(a)}
               title={ATTRIBUTE_HINT[a]}
               className={cn(
-                "flex items-center gap-2 rounded-control border px-3 py-2.5 text-left transition disabled:opacity-40",
+                "flex items-center gap-2 rounded-control border px-3 py-3 text-left transition disabled:opacity-40",
                 on ? "border-primary bg-primary text-primary-foreground" : "border-border bg-background hover:bg-surface-raised",
               )}
             >

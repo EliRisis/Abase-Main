@@ -45,7 +45,7 @@ export async function completeOnboardingAction(
     .eq("id", user.id);
 
   if (error) {
-    return { error: "Something went wrong saving your profile. Try again." };
+    return { error: "Couldn't save your profile. Check your connection and try again." };
   }
 
   // Straight into the athlete's first built program (not a library screen). If building

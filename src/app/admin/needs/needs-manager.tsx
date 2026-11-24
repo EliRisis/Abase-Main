@@ -180,7 +180,7 @@ function PhaseModifiers({ modifiers }: { modifiers: Modifier[] }) {
           <tbody>
             {PHASES.map((p) => (
               <tr key={p} className="border-t border-border">
-                <td className="py-1.5 pr-2 font-medium">{PHASE_LABEL[p]}</td>
+                <td className="py-2 pr-2 font-medium">{PHASE_LABEL[p]}</td>
                 {ATTRIBUTES.map((a) => (
                   <td key={a} className="px-1 py-1">
                     <Label className="sr-only">{`${PHASE_LABEL[p]} ${ATTRIBUTE_LABEL[a]}`}</Label>

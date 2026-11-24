@@ -16,7 +16,7 @@ export function PlanCard({ plan }: { plan: PlanWithRelations }) {
       href={`/plans/${plan.slug}`}
       className="group flex flex-col overflow-hidden surface-card transition hover:border-foreground/50"
     >
-      <div className="lane-stripes flex h-24 items-end justify-between gap-3 border-b border-border p-4">
+      <div className="lane-stripes flex h-24 items-end justify-between gap-3 border-b border-border p-card-sm">
         <span className="text-title leading-none">{plan.sport?.name ?? "Training"}</span>
         <span className="flex items-center gap-2">
           {plan.position && <PositionIcon slug={plan.position.slug} sportSlug={plan.sport?.slug} name={plan.position.name} size={40} className="rounded-card" />}
@@ -32,19 +32,19 @@ export function PlanCard({ plan }: { plan: PlanWithRelations }) {
             </p>
           )}
         </div>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1">
           {plan.sport && <Badge variant="primary"><SportIcon slug={plan.sport.slug} name={plan.sport.name} size={18} decorative />{plan.sport.name}</Badge>}
           {plan.position && <Badge><PositionIcon slug={plan.position.slug} sportSlug={plan.sport?.slug} name={plan.position.name} size={18} decorative />{plan.position.name}</Badge>}
           {plan.level && <Badge variant="default">{LEVEL_LABEL[plan.level]}</Badge>}
         </div>
         <div className="mt-auto flex items-center justify-between pt-1 text-caption text-muted">
-          <span className="inline-flex items-center gap-1.5">
+          <span className="inline-flex items-center gap-1">
             <CalendarDays size={14} />
             {plan.weeks} weeks · {plan.days_per_week}x/week
           </span>
           <ChevronRight
             size={16}
-            className="text-muted transition group-hover:translate-x-0.5 group-hover:text-primary"
+            className="text-muted transition group-hover:translate-x-0.5 group-hover:text-primary-text"
           />
         </div>
       </div>

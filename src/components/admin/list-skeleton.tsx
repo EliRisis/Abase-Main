@@ -30,7 +30,7 @@ export function AdminEditorSkeleton() {
         <Skeleton className="h-4 w-64" />
       </div>
       <div className="grid gap-8 lg:grid-cols-2">
-        <div className="flex max-w-xl flex-col gap-4">
+        <div className="flex max-w-xl flex-col gap-section">
           {Array.from({ length: 5 }).map((_, i) => (
             <Skeleton key={i} className="h-11 w-full" />
           ))}

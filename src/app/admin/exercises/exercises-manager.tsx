@@ -314,7 +314,7 @@ function ExerciseDialog({
             </div>
           </div>
 
-          <fieldset className="flex flex-col gap-3 rounded-control border border-border p-4">
+          <fieldset className="flex flex-col gap-3 rounded-control border border-border p-card-sm">
             <legend className="text-label px-1">Where it is done</legend>
             <p className="text-caption text-muted">Sessions are built per room: weight-room work goes in the gym session, field work in the field session. &quot;Either&quot; rides along with whichever session it sits in.</p>
             <div className="grid gap-3 sm:grid-cols-3">
@@ -369,7 +369,7 @@ function ExerciseDialog({
             </div>
           </fieldset>
 
-          <fieldset className="flex flex-col gap-3 rounded-control border border-border p-4">
+          <fieldset className="flex flex-col gap-3 rounded-control border border-border p-card-sm">
             <legend className="text-label px-1">Training attributes (0-10)</legend>
             <div className="flex items-center justify-between gap-3">
               <p className="text-caption text-muted">
@@ -459,7 +459,7 @@ function ExerciseDialog({
                 {BODY_AREAS.map((a) => {
                   const on = shownAreas.includes(a);
                   return (
-                    <label key={a} className={`flex cursor-pointer items-center gap-1.5 rounded-chip border px-2.5 py-1.5 text-caption ${on ? "border-primary bg-primary text-primary-foreground" : "border-border"}`}>
+                    <label key={a} className={`flex cursor-pointer items-center gap-1 rounded-chip border px-3 py-2 text-caption ${on ? "border-primary bg-primary text-primary-foreground" : "border-border"}`}>
                       <input
                         type="checkbox"
                         name="loadedAreas"
@@ -481,7 +481,7 @@ function ExerciseDialog({
             </div>
           </fieldset>
 
-          <fieldset className="flex flex-col gap-2 rounded-control border border-border p-4">
+          <fieldset className="flex flex-col gap-2 rounded-control border border-border p-card-sm">
             <legend className="text-label px-1">Only for these positions (optional)</legend>
             <p className="text-caption text-muted">Leave empty to make this exercise available to every position.</p>
             <div className="grid max-h-40 gap-1 overflow-y-auto sm:grid-cols-2">
@@ -500,7 +500,7 @@ function ExerciseDialog({
             </div>
           </fieldset>
 
-          <details className="rounded-control border border-border p-4">
+          <details className="rounded-control border border-border p-card-sm">
             <summary className="cursor-pointer text-subheading">Role-specific prescriptions (optional)</summary>
             <p className="my-2 text-caption text-muted">
               Override sets/reps when this exercise fills a given role, e.g. a squat as heavy 4 × 3-5 in a strength slot vs explosive 4 × 3 in a power slot. Blank rows use the defaults.

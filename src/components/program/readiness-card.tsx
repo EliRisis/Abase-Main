@@ -73,7 +73,7 @@ export function ReadinessCard({
   return (
     <div className="flex flex-col gap-3">
       {!showCheckin ? null : !submitted ? (
-        <form action={formAction} className="flex flex-col gap-2.5 surface-card p-4">
+        <form action={formAction} className="flex flex-col gap-2 surface-card p-card-sm">
           <input type="hidden" name="checkinDate" value={checkinDate} />
           <input type="hidden" name="score" value={score ?? ""} />
           <p className="text-heading">
@@ -87,7 +87,7 @@ export function ReadinessCard({
                 onClick={() => setScore(s.value)}
                 aria-pressed={score === s.value}
                 className={cn(
-                  "flex flex-1 flex-col items-center gap-1 rounded-control border py-2.5 transition",
+                  "flex flex-1 flex-col items-center gap-1 rounded-control border py-3 transition",
                   score === s.value ? "border-primary bg-primary text-primary-foreground" : "border-border bg-background hover:bg-surface-raised",
                 )}
               >
@@ -106,16 +106,16 @@ export function ReadinessCard({
           </Button>
         </form>
       ) : (
-        <div className="flex items-center gap-2 rounded-control border border-border bg-surface px-4 py-2.5 text-body text-muted">
+        <div className="flex items-center gap-2 rounded-control border border-border bg-surface px-4 py-3 text-body text-muted">
           <Check size={15} className="text-success" />
           Checked in{score ? ` · feeling ${SCORES.find((s) => s.value === score)?.label.toLowerCase()}` : ""}
         </div>
       )}
 
       {showAdvisory && advisory && (
-        <div className="flex flex-col gap-3 rounded-control border border-warning/40 bg-warning/10 p-4" role="status">
+        <div className="flex flex-col gap-3 rounded-control border border-warning/40 bg-warning/10 p-card-sm" role="status">
           <div className="flex items-start gap-2">
-            <AlertTriangle size={17} className="mt-0.5 shrink-0 text-warning" />
+            <AlertTriangle size={17} className="mt-1 shrink-0 text-warning" />
             <div className="flex flex-col gap-1">
               <p className="text-body font-semibold">Today might be a lot</p>
               <ul className="text-caption text-muted">

@@ -59,7 +59,7 @@ export function ExercisesEditor({
       <div className="flex flex-col divide-y divide-border surface-card">
         {sorted.length === 0 && (
           <p className="p-6 text-center text-body text-muted">
-            No exercises yet — add the first one below.
+            No exercises yet. Add the first one below.
           </p>
         )}
         {sorted.map((we, i) => (
@@ -102,7 +102,7 @@ export function ExercisesEditor({
               <p className="text-body flex flex-wrap items-center gap-2 font-semibold">
                 {we.exercise?.name}
                 {sessionOf[we.id] && (
-                  <span className="text-label-sm inline-flex items-center gap-1 border border-border px-1.5 py-1 text-muted">
+                  <span className="text-label-sm inline-flex items-center gap-1 border border-border px-2 py-1 text-muted">
                     <SessionIcon session={sessionOf[we.id]} size={11} /> {SESSION_SHORT[sessionOf[we.id]]}
                   </span>
                 )}
@@ -176,7 +176,7 @@ function AddExerciseForm({
     <form
       ref={formRef}
       action={formAction}
-      className="flex flex-col gap-3 rounded-card border border-dashed border-border p-4"
+      className="flex flex-col gap-3 rounded-card border border-dashed border-border p-card-sm"
     >
       <p className="text-body font-semibold">Add exercise</p>
       <div>

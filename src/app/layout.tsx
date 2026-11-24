@@ -30,7 +30,7 @@ const display = Barlow_Condensed({
 
 export const metadata: Metadata = {
   title: {
-    default: "Abase — Athlete Training",
+    default: "Abase · Strength and speed training for your position",
     template: "%s · Abase",
   },
   description:
@@ -50,7 +50,6 @@ export const viewport: Viewport = {
   ],
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
   viewportFit: "cover",
 };
 

@@ -15,16 +15,16 @@ export function AttributeBars({
   compact?: boolean;
 }) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-1">
       {ATTRIBUTES.map((a) => {
         const v = Math.max(0, Math.min(10, values[a] ?? 0));
         const on = highlight.includes(a);
         return (
           <div key={a} className="flex items-center gap-2 text-caption">
-            <span className={compact ? "flex w-24 shrink-0 items-center gap-1.5" : "flex w-32 shrink-0 items-center gap-1.5"}>
+            <span className={compact ? "flex w-24 shrink-0 items-center gap-1" : "flex w-32 shrink-0 items-center gap-1"}>
               {(() => {
                 const Icon = ATTRIBUTE_ICON[a];
-                return <Icon size={14} className={on ? "text-primary" : "text-muted"} />;
+                return <Icon size={14} className={on ? "text-primary-text" : "text-muted"} />;
               })()}
               <span className="text-label text-foreground">{ATTRIBUTE_LABEL[a]}</span>
             </span>

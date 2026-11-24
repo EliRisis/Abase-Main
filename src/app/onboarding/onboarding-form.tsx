@@ -133,7 +133,7 @@ export function OnboardingForm({
                     }
                   }}
                   className={cn(
-                    "flex flex-col items-center gap-3 rounded-card border p-5 text-center transition",
+                    "flex flex-col items-center gap-3 rounded-card border p-card text-center transition",
                     sportId === sport.id
                       ? "border-primary bg-surface-raised ring-2 ring-primary"
                       : "border-border bg-surface hover:bg-surface-raised",
@@ -172,13 +172,13 @@ export function OnboardingForm({
                   <div className="min-w-0 flex-1">
                     <p className="text-body font-semibold">{position.name}</p>
                     {position.description && (
-                      <p className="mt-0.5 text-caption text-muted">
+                      <p className="mt-1 text-caption text-muted">
                         {position.description}
                       </p>
                     )}
                   </div>
                   {positionId === position.id && (
-                    <Check size={18} className="shrink-0 text-primary" />
+                    <Check size={18} className="shrink-0 text-primary-text" />
                   )}
                 </button>
               ))}
@@ -209,10 +209,10 @@ export function OnboardingForm({
                 >
                   <div>
                     <p className="text-body font-semibold">{l.label}</p>
-                    <p className="mt-0.5 text-caption text-muted">{l.description}</p>
+                    <p className="mt-1 text-caption text-muted">{l.description}</p>
                   </div>
                   {level === l.value && (
-                    <Check size={18} className="shrink-0 text-primary" />
+                    <Check size={18} className="shrink-0 text-primary-text" />
                   )}
                 </button>
               ))}

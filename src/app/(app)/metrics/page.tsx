@@ -64,7 +64,7 @@ export default async function MetricsPage() {
       <div>
         <h1 className="text-title">Metrics</h1>
         <p className="mt-1 text-body text-muted">
-          Test yourself whenever — track it here, separate from daily workout logs.
+          Test yourself whenever you like. Results live here, separate from your workout logs.
         </p>
       </div>
 
@@ -72,7 +72,7 @@ export default async function MetricsPage() {
         <div className="flex flex-col gap-2">
           {plateaus.map((p) => (
             <p key={p.slug} className="flex items-start gap-2 rounded-control border border-warning/40 bg-warning/10 px-3 py-2 text-caption">
-              <TrendingUp size={14} className="mt-0.5 shrink-0 text-warning" />
+              <TrendingUp size={14} className="mt-1 shrink-0 text-warning" />
               <span>{p.message}</span>
             </p>
           ))}
@@ -122,7 +122,7 @@ export default async function MetricsPage() {
                   {better !== null && (
                     <span
                       className={
-                        "inline-flex items-center gap-0.5 text-caption font-semibold " +
+                        "inline-flex items-center gap-1 text-caption font-semibold " +
                         (better ? "text-success" : worse ? "text-danger" : "text-muted")
                       }
                     >
@@ -137,13 +137,13 @@ export default async function MetricsPage() {
 
               {logs.length > 1 && (
                 <details className="mt-3">
-                  <summary className="cursor-pointer text-caption font-medium text-primary">
+                  <summary className="cursor-pointer text-caption font-medium text-primary-text">
                     <TrendingUp size={12} className="mr-1 inline" />
                     History ({logs.length})
                   </summary>
                   <div className="mt-2 flex flex-col divide-y divide-border">
                     {logs.map((l) => (
-                      <div key={l.id} className="flex items-center justify-between py-1.5 text-caption">
+                      <div key={l.id} className="flex items-center justify-between py-2 text-caption">
                         <span className="text-muted">{l.logged_on}</span>
                         <span className="font-medium">
                           {l.value} {metric.unit}

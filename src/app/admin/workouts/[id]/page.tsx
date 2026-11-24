@@ -52,7 +52,7 @@ export default async function EditWorkoutPage({
           <p className="text-label mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-foreground">
             Runs as {sessions.length} session{sessions.length === 1 ? "" : "s"}:
             {sessions.map((s) => (
-              <span key={s} className="inline-flex items-center gap-1.5 text-primary">
+              <span key={s} className="inline-flex items-center gap-1 text-primary-text">
                 <SessionIcon session={s} size={14} /> {SESSION_LABEL[s]}
               </span>
             ))}

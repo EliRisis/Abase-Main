@@ -16,11 +16,11 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-4 px-6 py-20 text-center">
+    <div className="flex flex-1 flex-col items-center justify-center gap-section px-6 py-20 text-center">
       <AlertTriangle size={36} className="text-danger" />
-      <h1 className="text-title">Something went wrong</h1>
+      <h1 className="text-title">That didn&apos;t load</h1>
       <p className="max-w-sm text-body text-muted">
-        That&apos;s on us — try again, and if it keeps happening let us know.
+        Nothing you did caused this, and your logged sets are safe. Try again.
       </p>
       <Button onClick={reset}>Try again</Button>
     </div>

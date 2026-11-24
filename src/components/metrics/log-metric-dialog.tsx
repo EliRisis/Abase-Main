@@ -49,7 +49,7 @@ export function LogMetricDialog({ metric }: { metric: Tables<"metric_definitions
             <input type="hidden" name="metricId" value={metric.id} />
             <div>
               <Label htmlFor={`value-${metric.id}`}>
-                Value ({metric.unit}) — between {metric.min_value} and {metric.max_value}
+                Value ({metric.unit}), between {metric.min_value} and {metric.max_value}
               </Label>
               <Input
                 id={`value-${metric.id}`}

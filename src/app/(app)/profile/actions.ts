@@ -50,7 +50,7 @@ export async function updateProfileAction(
     .eq("id", user.id);
 
   if (error) {
-    return { error: "Something went wrong saving your profile. Try again." };
+    return { error: "Couldn't save your profile. Check your connection and try again." };
   }
 
   revalidatePath("/profile");

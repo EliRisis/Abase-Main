@@ -65,7 +65,7 @@ export default async function SessionDonePage({ params }: { params: Promise<{ pr
   return (
     <div className="mx-auto flex w-full max-w-md flex-col gap-page py-6">
       <div className="flex flex-col gap-2">
-        <p className="text-label flex items-center gap-2 text-primary">
+        <p className="text-label flex items-center gap-2 text-primary-text">
           {session ? <SessionIcon session={session} size={18} /> : <CheckCircle2 size={18} />} {session ? `${SESSION_LABEL[session]} done` : "Session done"}
         </p>
         <h1 className="text-display">{title}</h1>
@@ -83,7 +83,7 @@ export default async function SessionDonePage({ params }: { params: Promise<{ pr
       {next && (
         <form action={next.start} className="surface-card flex flex-col gap-3 p-card">
           <div className="flex items-center gap-3">
-            <SessionIcon session={next.setting} size={26} className="text-primary" />
+            <SessionIcon session={next.setting} size={26} className="text-primary-text" />
             <div>
               <p className="text-heading">Next: {SESSION_SHORT[next.setting]}</p>
               <p className="text-caption text-muted">Today has another session. Start it now or come back to it later.</p>

@@ -137,7 +137,7 @@ export default async function PlanDetailPage({
       </div>
 
       <div className="flex flex-col gap-3">
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1">
           {plan.sport && <Badge variant="primary"><SportIcon slug={plan.sport.slug} name={plan.sport.name} size={18} decorative />{plan.sport.name}</Badge>}
           {plan.position && <Badge><PositionIcon slug={plan.position.slug} sportSlug={plan.sport?.slug} name={plan.position.name} size={18} decorative />{plan.position.name}</Badge>}
           {plan.level && <Badge variant="default">{LEVEL_LABEL[plan.level]}</Badge>}
@@ -152,7 +152,7 @@ export default async function PlanDetailPage({
       {why && (
         <div className="flex flex-col gap-3 surface-card p-card-sm">
           <p className="flex items-start gap-2 text-body">
-            <Info size={16} className="mt-0.5 shrink-0 text-primary" />
+            <Info size={16} className="mt-1 shrink-0 text-primary-text" />
             <span>
               <span className="font-semibold">Why this matters:</span> {why.text}
             </span>
@@ -200,7 +200,7 @@ export default async function PlanDetailPage({
                   return (
                     <div
                       key={dayNumber}
-                      className="surface-card flex items-center justify-between p-4"
+                      className="surface-card flex items-center justify-between p-card-sm"
                     >
                       <div>
                         <p className="text-label text-muted">{label}</p>
@@ -209,10 +209,10 @@ export default async function PlanDetailPage({
                         </p>
                       </div>
                       {entry?.workout && (
-                        <div className="flex flex-col items-end gap-1.5 text-caption text-muted">
-                          <span className="flex flex-wrap justify-end gap-1.5">
+                        <div className="flex flex-col items-end gap-1 text-caption text-muted">
+                          <span className="flex flex-wrap justify-end gap-1">
                             {(sessionsByWorkout.get(entry.workout.id) ?? []).map((st) => (
-                              <span key={st} className="text-label-sm inline-flex items-center gap-1 border border-border px-1.5 py-1 text-foreground">
+                              <span key={st} className="text-label-sm inline-flex items-center gap-1 border border-border px-2 py-1 text-foreground">
                                 <SessionIcon session={st} size={12} /> {SESSION_SHORT[st]}
                               </span>
                             ))}

@@ -41,7 +41,7 @@ export default async function AdminOverviewPage() {
             href={stat.href}
             className="flex flex-col gap-2 surface-card p-card transition hover:border-foreground/50"
           >
-            <stat.icon size={18} className="text-primary" />
+            <stat.icon size={18} className="text-primary-text" />
             <span className="text-stat">{stat.value}</span>
             <span className="text-body text-muted">{stat.label}</span>
           </Link>

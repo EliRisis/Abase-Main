@@ -9,7 +9,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   return (
     <div className="flex min-h-full flex-1 flex-col bg-background">
       <header className="sticky top-0 z-40 border-b border-border bg-background safe-top">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
           <div className="flex items-center gap-3">
             <Link href="/dashboard" className="text-title tracking-wide">
               Abase

@@ -92,7 +92,7 @@ export function WeekStrip({ days, today, selected, editDays }: { days: StripDay[
       </div>
       <div ref={scrollRef} onScroll={onScroll} className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto" aria-label="Upcoming weeks">
         {weeks.map((week, wi) => (
-          <div key={wi} className="grid w-full shrink-0 snap-start grid-cols-7 gap-1.5" role="list">
+          <div key={wi} className="grid w-full shrink-0 snap-start grid-cols-7 gap-1" role="list">
             {week.map((d) => {
               const isToday = d.date === today;
               const isPast = d.date < today;
@@ -109,13 +109,13 @@ export function WeekStrip({ days, today, selected, editDays }: { days: StripDay[
                   {isPast ? (
                     <span className="h-1.5 w-1.5 bg-border" />
                   ) : d.game ? (
-                    <Badge variant="danger" className="px-1.5 py-0.5 text-label-sm">
+                    <Badge variant="danger" className="px-2 py-1 text-label-sm">
                       Game
                     </Badge>
                   ) : d.done ? (
-                    <CheckCircle2 size={16} className={white ?? "text-primary"} />
+                    <CheckCircle2 size={16} className={white ?? "text-primary-text"} />
                   ) : d.sessions.length > 0 ? (
-                    <span className={cn("flex gap-0.5", white ?? "text-foreground")}>
+                    <span className={cn("flex gap-1", white ?? "text-foreground")}>
                       {d.sessions.map((s) => (
                         <SessionIcon key={s} session={s} size={14} />
                       ))}
@@ -123,7 +123,7 @@ export function WeekStrip({ days, today, selected, editDays }: { days: StripDay[
                   ) : (
                     <span className="h-1.5 w-1.5 bg-border" />
                   )}
-                  {d.practice && <span className={cn("text-label-sm", white ?? "text-primary")}>Prac.</span>}
+                  {d.practice && <span className={cn("text-label-sm", white ?? "text-primary-text")}>Prac.</span>}
                 </>
               );
               return !isPast && d.href ? (

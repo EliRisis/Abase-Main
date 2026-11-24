@@ -37,7 +37,7 @@ export default async function Home() {
           <h1 className="text-display-xl max-w-3xl">
             Lift inside.
             <br />
-            <span className="text-primary">Run outside.</span>
+            <span className="text-primary-text">Run outside.</span>
           </h1>
           <p className="max-w-xl text-body text-muted">
             One weekly program for your sport and position, split into the sessions you actually walk into: the weight
@@ -55,10 +55,10 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="grid grid-cols-1 gap-4 pb-20 sm:grid-cols-2">
+        <section className="grid grid-cols-1 gap-section pb-20 sm:grid-cols-2">
           <div className="surface-card overflow-hidden">
             <div className="plate flex items-center gap-3 px-card py-4">
-              <WeightRoomIcon size={28} className="text-primary" />
+              <WeightRoomIcon size={28} className="text-primary-text" />
               <h2 className="text-heading">Weight Room</h2>
             </div>
             <div className="grid grid-cols-3 gap-2 p-card">
@@ -78,7 +78,7 @@ export default async function Home() {
 
           <div className="surface-card overflow-hidden">
             <div className="lane-stripes flex items-center gap-3 border-b border-border px-card py-4">
-              <FieldIcon size={28} className="text-primary" />
+              <FieldIcon size={28} className="text-primary-text" />
               <h2 className="text-heading">Field &amp; Conditioning</h2>
             </div>
             <div className="grid grid-cols-3 gap-2 p-card">
@@ -96,11 +96,11 @@ export default async function Home() {
             <p className="px-card pb-card text-body text-muted">Distance, time and rest. A timer between reps and a result you can beat next week.</p>
           </div>
 
-          <div className="surface-card flex items-start gap-4 p-card sm:col-span-2">
-            <LineChart size={28} className="mt-1 shrink-0 text-primary" />
+          <div className="surface-card flex items-start gap-section p-card sm:col-span-2">
+            <LineChart size={28} className="mt-1 shrink-0 text-primary-text" />
             <div>
               <h2 className="text-heading">It changes when you do</h2>
-              <p className="mt-1.5 max-w-2xl text-body text-muted">
+              <p className="mt-2 max-w-2xl text-body text-muted">
                 Change position or season and adjust the program in place, history intact. Start a new block when the old
                 one is done. The old one is archived, never deleted.
               </p>

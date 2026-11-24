@@ -23,7 +23,6 @@ const level = z
 export const sportSchema = z.object({
   name: z.string().trim().min(2).max(60),
   slug,
-  icon: z.string().trim().max(8).optional().nullable(),
 });
 export type SportInput = z.infer<typeof sportSchema>;
 

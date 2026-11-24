@@ -13,7 +13,6 @@ function parseForm(formData: FormData) {
   return sportSchema.safeParse({
     name: formData.get("name"),
     slug: formData.get("slug"),
-    icon: formData.get("icon"),
   });
 }
 
@@ -28,7 +27,6 @@ export async function createSportAction(
   const { error } = await supabase.from("sports").insert({
     name: parsed.data.name,
     slug: parsed.data.slug,
-    icon: parsed.data.icon || null,
   });
 
   if (error) return { error: error.message };
@@ -50,7 +48,6 @@ export async function updateSportAction(
     .update({
       name: parsed.data.name,
       slug: parsed.data.slug,
-      icon: parsed.data.icon || null,
     })
     .eq("id", id);
 

@@ -34,7 +34,7 @@ export default async function ProgramHistoryPage() {
   return (
     <div className="flex flex-col gap-page">
       <div>
-        <Link href="/program" className="text-label inline-flex items-center gap-1.5 text-muted hover:text-foreground">
+        <Link href="/program" className="text-label inline-flex items-center gap-1 text-muted hover:text-foreground">
           <ArrowLeft size={14} /> Your program
         </Link>
         <h1 className="text-display mt-3">History</h1>

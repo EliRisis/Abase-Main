@@ -60,8 +60,8 @@ export function ArchetypesManager({
           <div key={a.id} className="flex items-center justify-between gap-3 p-4">
             <div className="min-w-0">
               <p className="text-body font-semibold">{a.name}</p>
-              {a.description && <p className="mt-0.5 text-caption text-muted">{a.description}</p>}
-              <p className="mt-0.5 text-caption text-primary">
+              {a.description && <p className="mt-1 text-caption text-muted">{a.description}</p>}
+              <p className="mt-1 text-caption text-primary-text">
                 {positionCounts[a.id] ?? 0} position{(positionCounts[a.id] ?? 0) === 1 ? "" : "s"}
               </p>
             </div>

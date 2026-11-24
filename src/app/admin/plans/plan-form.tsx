@@ -260,7 +260,7 @@ export function PlanForm({
         </div>
       </div>
 
-      <label className="flex items-center gap-2.5 text-body font-medium">
+      <label className="flex items-center gap-2 text-body font-medium">
         <Checkbox
           checked={published}
           onCheckedChange={(v) => setPublished(v === true)}

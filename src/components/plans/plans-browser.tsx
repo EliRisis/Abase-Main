@@ -15,7 +15,7 @@ import {
 import type { ExperienceLevel, Tables } from "@/lib/database.types";
 
 export type PlanWithRelations = Tables<"plans"> & {
-  sport: Pick<Tables<"sports">, "id" | "name" | "slug" | "icon"> | null;
+  sport: Pick<Tables<"sports">, "id" | "name" | "slug"> | null;
   position: Pick<Tables<"positions">, "id" | "name" | "slug" | "sport_id"> | null;
 };
 
@@ -76,7 +76,7 @@ export function PlansBrowser({
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <SlidersHorizontal size={15} className="mr-0.5 text-muted" />
+          <SlidersHorizontal size={15} className="mr-1 text-muted" />
           <Select
             value={sportId}
             onValueChange={(v) => {
@@ -132,7 +132,7 @@ export function PlansBrowser({
           No plans match those filters yet.
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-section sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((plan) => (
             <PlanCard key={plan.id} plan={plan} />
           ))}

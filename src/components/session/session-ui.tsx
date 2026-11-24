@@ -30,7 +30,7 @@ export function SessionHeader({
   return (
     <div
       className={cn(
-        "flex items-center gap-3 px-card-sm py-3.5",
+        "flex items-center gap-3 px-card-sm py-4",
         session === "weight_room" && "plate",
         session === "field" && "lane-stripes border-b border-border",
         session === "recovery" && "border-b border-border",
@@ -42,7 +42,7 @@ export function SessionHeader({
       </span>
       <div className="min-w-0 flex-1">
         <h3 className="text-heading">{SESSION_LABEL[session]}</h3>
-        <p className="mt-0.5 truncate text-caption text-muted">{meta ?? SESSION_HINT[session]}</p>
+        <p className="mt-1 truncate text-caption text-muted">{meta ?? SESSION_HINT[session]}</p>
       </div>
       {positionSlug && <PositionIcon slug={positionSlug} size={28} className="rounded-control" />}
       {action}

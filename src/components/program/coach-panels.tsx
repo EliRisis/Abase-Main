@@ -46,7 +46,7 @@ function Panel({ icon, title, blurb, children }: { icon: React.ReactNode; title:
     <section className="flex flex-col gap-section surface-card p-card">
       <div>
         <h2 className="flex items-center gap-2 text-subheading">
-          <span className="text-primary">{icon}</span> {title}
+          <span className="text-primary-text">{icon}</span> {title}
         </h2>
         <p className="mt-1 text-caption text-muted">{blurb}</p>
       </div>
@@ -138,7 +138,7 @@ export function LimitationsPanel({ items }: { items: { id: string; area: Limitat
       {items.length > 0 && (
         <ul className="flex flex-col divide-y divide-border surface-inset">
           {items.map((l) => (
-            <li key={l.id} className="flex items-center justify-between gap-3 px-3 py-2.5 text-body">
+            <li key={l.id} className="flex items-center justify-between gap-3 px-3 py-3 text-body">
               <span>
                 <span className="font-semibold">
                   {l.side === "both" ? "" : `${SIDE_LABEL[l.side]} `}

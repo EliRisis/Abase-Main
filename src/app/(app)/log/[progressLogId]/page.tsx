@@ -1,4 +1,4 @@
-import { Clock, Info, X } from "@/components/icons";
+import { Clock, X } from "@/components/icons";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { SessionIcon } from "@/components/session/session-ui";
@@ -13,6 +13,7 @@ import { lastLogged } from "@/lib/program/service";
 import { whyNoteFor } from "@/lib/program/why";
 import { createClient } from "@/lib/supabase/server";
 import type { PrescriptionMode, Tables, TrainingSetting } from "@/lib/database.types";
+import { Callout } from "@/components/ui/callout";
 
 export const metadata = { title: "Log Session" };
 
@@ -151,11 +152,11 @@ export default async function LogWorkoutPage({ params }: { params: Promise<{ pro
             <SessionIcon session={session} size={28} />
           </span>
           <div className="min-w-0">
-            <p className="text-label text-primary">{SESSION_LABEL[session]}</p>
+            <p className="text-label text-primary-text">{SESSION_LABEL[session]}</p>
             <h1 className="text-title mt-1">{title}</h1>
-            <span className="mt-1.5 inline-flex flex-wrap items-center gap-x-3 gap-y-1 text-caption text-muted">
+            <span className="mt-2 inline-flex flex-wrap items-center gap-x-3 gap-y-1 text-caption text-muted">
               {minutes && (
-                <span className="inline-flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-1">
                   <Clock size={13} /> ~{minutes} min
                 </span>
               )}
@@ -170,12 +171,7 @@ export default async function LogWorkoutPage({ params }: { params: Promise<{ pro
       </div>
 
       {why && (
-        <p className="flex items-start gap-2 border-l-[3px] border-l-primary bg-surface px-3 py-2 text-caption">
-          <Info size={14} className="mt-0.5 shrink-0 text-primary" />
-          <span>
-            <span className="font-semibold">Why this matters:</span> {why}
-          </span>
-        </p>
+        <Callout label="Why this matters">{why}</Callout>
       )}
 
       <p className="-mt-2 text-caption text-muted">
@@ -250,7 +246,7 @@ export default async function LogWorkoutPage({ params }: { params: Promise<{ pro
         })}
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background p-4 safe-bottom sm:sticky sm:border-t-0 sm:bg-transparent sm:p-0">
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background p-card-sm safe-bottom sm:sticky sm:border-t-0 sm:bg-transparent sm:p-0">
         <div className="mx-auto max-w-5xl">
           <FinishWorkoutButton progressLogId={progressLog.id} label={finishLabel} />
         </div>

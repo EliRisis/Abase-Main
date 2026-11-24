@@ -31,7 +31,7 @@ export function DayChips({
   }
   return (
     <div>
-      <div className="grid grid-cols-7 gap-1.5" role="group" aria-label="Which days can you train?">
+      <div className="grid grid-cols-7 gap-1" role="group" aria-label="Which days can you train?">
         {LETTERS.map((letter, i) => {
           const d = i + 1;
           const on = value.includes(d);
@@ -44,7 +44,7 @@ export function DayChips({
               onClick={() => toggle(d)}
               disabled={(!on && atMax) || (on && value.length <= MIN_TRAINING_DAYS)}
               className={cn(
-                "flex h-11 flex-col items-center justify-center gap-0.5 rounded-control border text-label transition disabled:opacity-40",
+                "flex h-11 flex-col items-center justify-center gap-1 rounded-control border text-label transition disabled:opacity-40",
                 on ? "border-primary bg-primary text-primary-foreground" : "border-border bg-background hover:bg-surface-raised",
               )}
             >
@@ -53,7 +53,7 @@ export function DayChips({
           );
         })}
       </div>
-      <p className="mt-1.5 text-caption text-muted">
+      <p className="mt-2 text-caption text-muted">
         {value.length} day{value.length === 1 ? "" : "s"} a week. Pick {MIN_TRAINING_DAYS} to {MAX_TRAINING_DAYS}.
       </p>
       {value.map((d) => (

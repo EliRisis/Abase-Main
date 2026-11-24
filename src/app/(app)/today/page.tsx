@@ -1,4 +1,4 @@
-import { CalendarRange, Clock, Info, RecoveryIcon } from "@/components/icons";
+import { CalendarRange, Clock, RecoveryIcon } from "@/components/icons";
 import { PositionIcon } from "@/components/icons/app-icon";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -20,6 +20,7 @@ import { dayTargets, loadRecentSessions, nearbyEvents, type DayExerciseRow } fro
 import { evaluateReadiness, patternsFromCategory } from "@/lib/readiness";
 import { INTENSITY_LABEL, INTENSITY_VARIANT, PHASE_LABEL } from "@/lib/training";
 import type { Tables } from "@/lib/database.types";
+import { Callout } from "@/components/ui/callout";
 
 export const metadata = { title: "Today" };
 
@@ -45,9 +46,9 @@ export default async function TodayPage({ searchParams }: { searchParams: Promis
       <div className="flex flex-col gap-page">
         <h1 className="text-display">Today</h1>
         <div className="flex flex-col items-center gap-3 rounded-card border border-dashed border-border p-10 text-center">
-          <CalendarRange size={32} className="text-primary" />
+          <CalendarRange size={32} className="text-primary-text" />
           <p className="text-heading">You finished this {program.weeks}-week block</p>
-          <Link href="/program" className="text-label text-primary">
+          <Link href="/program" className="text-label text-primary-text">
             Start your next block on the Program tab →
           </Link>
         </div>
@@ -198,12 +199,7 @@ export default async function TodayPage({ searchParams }: { searchParams: Promis
           {day.note && <p className="mt-1 text-caption text-muted">{day.note}</p>}
         </div>
         {day.why_note && (
-          <p className="flex items-start gap-2 border-l-[3px] border-l-primary bg-surface px-3 py-2 text-caption">
-            <Info size={14} className="mt-0.5 shrink-0 text-primary" />
-            <span>
-              <span className="font-semibold">Why this matters:</span> {day.why_note}
-            </span>
-          </p>
+          <Callout label="Why this matters">{day.why_note}</Callout>
         )}
         {isToday && (
           <ReadinessCard
@@ -214,7 +210,7 @@ export default async function TodayPage({ searchParams }: { searchParams: Promis
           />
         )}
         {changes.length > 0 && (
-          <ul className="surface-card flex flex-col gap-1.5 p-card-sm text-body">
+          <ul className="surface-card flex flex-col gap-1 p-card-sm text-body">
             {changes.map((w) => (
               <li key={w.name}>
                 <span className="font-semibold">{w.name}:</span> {w.t!.reason}
@@ -241,7 +237,7 @@ export default async function TodayPage({ searchParams }: { searchParams: Promis
   return (
     <div className="flex flex-col gap-page">
       <div>
-        <p className="text-label text-primary">
+        <p className="text-label text-primary-text">
           {monthDayLabel(viewDate)} · {PHASE_LABEL[program.phase]}
         </p>
         <div className="mt-2 flex items-center gap-3">
@@ -254,7 +250,7 @@ export default async function TodayPage({ searchParams }: { searchParams: Promis
 
       <TrackTabs defaultTrack={defaultTrack} field={panel("field")} gym={panel("weight_room")} />
 
-      <Link href="/program" className="text-center text-label text-primary">
+      <Link href="/program" className="text-center text-label text-primary-text">
         See the whole block on the Program tab →
       </Link>
     </div>

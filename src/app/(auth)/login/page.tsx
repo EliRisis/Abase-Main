@@ -65,7 +65,7 @@ export default function LoginPage() {
 
       <p className="text-center text-body text-muted">
         New to Abase?{" "}
-        <Link href="/signup" className="font-semibold text-primary">
+        <Link href="/signup" className="font-semibold text-primary-text">
           Create an account
         </Link>
       </p>

@@ -40,7 +40,7 @@ export function EditDaysButton({ trainingDays }: { trainingDays: number[] }) {
       </Button>
       <DialogContent>
         <DialogTitle>Which days can you train?</DialogTitle>
-        <form action={formAction} className="mt-4 flex flex-col gap-4">
+        <form action={formAction} className="mt-4 flex flex-col gap-section">
           <DayChips value={days} onChange={setDays} />
           {state.error && (
             <p className="text-body text-danger" role="alert">

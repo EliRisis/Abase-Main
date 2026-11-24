@@ -32,7 +32,7 @@ export function BottomNav() {
               )}
             >
               {active && <span className="absolute inset-x-4 top-0 h-[3px] bg-primary" />}
-              <item.icon size={22} className={active ? "text-primary" : undefined} />
+              <item.icon size={22} className={active ? "text-primary-text" : undefined} />
               {item.label}
             </Link>
           );

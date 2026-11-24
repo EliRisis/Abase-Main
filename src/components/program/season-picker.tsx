@@ -32,7 +32,7 @@ export function SeasonPicker({ value, onChange, disabled }: { value: TrainingPha
               disabled={disabled}
               onClick={() => onChange(phaseFromChoice(c, false))}
               className={cn(
-                "flex flex-col items-start gap-0.5 rounded-control border p-3 text-left transition disabled:opacity-50",
+                "flex flex-col items-start gap-1 rounded-control border p-3 text-left transition disabled:opacity-50",
                 on ? "border-primary border-l-[4px] bg-surface-raised" : "border-border bg-background hover:bg-surface-raised",
               )}
             >
@@ -42,7 +42,7 @@ export function SeasonPicker({ value, onChange, disabled }: { value: TrainingPha
           );
         })}
       </div>
-      <label className={cn("flex cursor-pointer items-start gap-2.5 rounded-control px-1 py-1.5", disabled && "opacity-50")}>
+      <label className={cn("flex cursor-pointer items-start gap-2 rounded-control px-1 py-2", disabled && "opacity-50")}>
         <button
           type="button"
           role="switch"
@@ -50,7 +50,7 @@ export function SeasonPicker({ value, onChange, disabled }: { value: TrainingPha
           disabled={disabled}
           onClick={() => onChange(phaseFromChoice(choice, !refined))}
           className={cn(
-            "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-chip border transition",
+            "mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-chip border transition",
             refined ? "border-primary bg-primary text-primary-foreground" : "border-border bg-background",
           )}
         >

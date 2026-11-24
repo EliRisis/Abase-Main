@@ -179,12 +179,6 @@ function SportDialog({
               required
             />
           </div>
-          <div>
-            <Label htmlFor="icon">Legacy icon</Label>
-            <Input id="icon" name="icon" defaultValue={sport?.icon ?? ""} maxLength={4} />
-              <p className="mt-1 text-caption text-muted">Legacy field. The app draws the sport from its slug (public/icons/sports/&lt;slug&gt;.png) and does not show this.</p>
-          </div>
-
           {state.error && (
             <p className="text-body text-danger" role="alert">
               {state.error}

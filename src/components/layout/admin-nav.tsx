@@ -38,13 +38,13 @@ export function AdminNav() {
             key={item.href}
             href={item.href}
             className={cn(
-              "flex shrink-0 items-center gap-2.5 whitespace-nowrap border-l-[3px] px-3.5 py-2.5 text-button transition",
+              "flex shrink-0 items-center gap-2 whitespace-nowrap border-l-[3px] px-4 py-3 text-button transition",
               active
                 ? "border-primary bg-surface-raised text-foreground"
                 : "border-transparent text-muted hover:bg-surface hover:text-foreground",
             )}
           >
-            <item.icon size={18} className={active ? "text-primary" : undefined} />
+            <item.icon size={18} className={active ? "text-primary-text" : undefined} />
             {item.label}
           </Link>
         );

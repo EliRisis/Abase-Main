@@ -14,6 +14,7 @@ import { requireOnboardedProfile } from "@/lib/auth/require-profile";
 import { cn } from "@/lib/utils";
 import type { Tables, TrainingSetting } from "@/lib/database.types";
 import { SessionIcon } from "@/components/session/session-ui";
+import { Callout } from "@/components/ui/callout";
 
 export const metadata = { title: "Today" };
 
@@ -55,8 +56,8 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 
   if (!userPlan) {
     return (
-      <div className="flex flex-1 flex-col items-center justify-center gap-4 py-20 text-center">
-        <WeightRoomIcon size={56} className="text-primary" />
+      <div className="flex flex-1 flex-col items-center justify-center gap-section py-20 text-center">
+        <WeightRoomIcon size={56} className="text-primary-text" />
         <h1 className="text-display">{profile.display_name ? `Let's go, ${profile.display_name.split(" ")[0]}` : "Let's go"}</h1>
         <p className="max-w-sm text-body text-muted">Build a training week for your position, split into weight-room and field sessions, or pick a single module from the library.</p>
         <div className="flex flex-col gap-2 sm:flex-row">
@@ -75,8 +76,8 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 
   if (finished) {
     return (
-      <div className="flex flex-1 flex-col items-center justify-center gap-4 py-20 text-center">
-        <Trophy size={48} className="text-primary" />
+      <div className="flex flex-1 flex-col items-center justify-center gap-section py-20 text-center">
+        <Trophy size={48} className="text-primary-text" />
         <h1 className="text-display">Plan complete</h1>
         <p className="max-w-sm text-body text-muted">
           You finished all {userPlan.plan!.weeks} weeks of <strong>{userPlan.plan!.name}</strong>. Time to pick your next one.
@@ -147,18 +148,18 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
   return (
     <div className="flex flex-col gap-page">
       {activeProgram && (
-        <div className="flex items-center justify-between gap-3 border-l-[4px] border-l-primary bg-surface px-4 py-3 text-caption">
-          <span>
-            <strong>Extra session.</strong> This module is on top of your program. It still counts toward your history and readiness.
+        <Callout label="Extra session">
+          <span className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
+            <span>This module is on top of your program. It still counts toward your history and readiness.</span>
+            <Link href="/program" className="text-label shrink-0 text-primary-text">
+              Back to program
+            </Link>
           </span>
-          <Link href="/program" className="text-label shrink-0 text-primary">
-            Back to program
-          </Link>
-        </div>
+        </Callout>
       )}
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-label text-primary">
+          <p className="text-label text-primary-text">
             {userPlan.plan?.name} · Week {weekNumber} of {userPlan.plan?.weeks}
           </p>
           <h1 className="text-display mt-2">{today?.workout ? (today.title ?? today.workout.name) : "Rest day"}</h1>
@@ -175,7 +176,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
         )}
       </div>
 
-      <div className="flex gap-1.5">
+      <div className="flex gap-1">
         {WEEKDAY_SHORT.map((label, i) => {
           const dayNumber = i + 1;
           const entry = (weekWorkouts ?? []).find((w) => w.day_number === dayNumber);
@@ -183,13 +184,13 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
           const isDone = entry ? isDayDone(entry) : false;
           const sess = entry ? sessionsOfEntry(entry) : [];
           return (
-            <div key={dayNumber} className={cn("relative flex flex-1 flex-col items-center gap-1 rounded-control border px-1 pb-2.5 pt-3.5", isToday ? "border-foreground bg-surface-raised" : "border-border bg-surface")}>
+            <div key={dayNumber} className={cn("relative flex flex-1 flex-col items-center gap-1 rounded-control border px-1 pb-3 pt-4", isToday ? "border-foreground bg-surface-raised" : "border-border bg-surface")}>
               {isToday && <span className="absolute inset-x-0 top-0 h-[3px] bg-primary" />}
               <span className="text-label text-foreground">{label}</span>
               {isDone ? (
-                <CheckCircle2 size={18} className="text-primary" />
+                <CheckCircle2 size={18} className="text-primary-text" />
               ) : sess.length > 0 ? (
-                <span className="flex gap-0.5">
+                <span className="flex gap-1">
                   {sess.map((s) => (
                     <SessionIcon key={s} session={s} size={14} />
                   ))}
